@@ -1,0 +1,52 @@
+{% extends 'adminApp/body.html' %}
+
+{% block body %}
+<br>
+<h1 align="center" style="color:white ;">Sub Topics</h1>
+<div class="container-fluid"></div>
+    <div class="row">
+        <div class="col-md-2 mx-2 text-white">
+            <a class="" href="{% url 'subtopics' %}"><button type="button"
+            class=" btn btn-lg-4 btn-warning btn-outline-success" >Add</button>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+            <br><br>
+        </div>   
+    </div>
+</div>
+    <div class="container-fluid"></div>
+           <div class="row " >
+            <div class="col col-md-8 mx-auto p-10px bg-dark text-center">
+                
+                <table class="table table-dark table-bordered table-hover table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Topic</th>
+                        <th>Subtopics</th>
+                        <th>Iframe</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                        {% for i in subtopic %}
+                        <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.topic_id.topic_name}}</td>
+                        <td>{{i.subtopic_name}}</td>
+                        <td style="overflow:hidden !important;">{{i.iframe}}</td>
+                        <td>
+                            <a href="{% url 'edit-subtopic' i.id %}"><button style="background-color:rgb(170, 230, 195)">Edit
+                            </button></a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete-subtopic' i.id %}"><button style="background-color:rgb(170, 230, 195)">Delete
+                            </button></a>
+                        </td>
+                    </tr>
+                        {% endfor %}
+                </table>
+            </div>
+            
+        </div>
+    </div>
+<br>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'adminApp/body.html' %}
+{% load static %}
+{% block body %}
+
+    {% if message %}
+        <div class="alerts-success">
+            {{message}}
+        </div>
+    {% endif %}
+    <br><br>
+        <form action="{% url 'register' %}" method = "post">
+            {% csrf_token %}
+            <div class="container">
+                <label for="user">Username</label>
+                <input type="text" id = "user" name = "username"/>
+                <br><br>
+                <label for="email">Email</label>
+                <input type="email" id = "email" name = "email"/>
+                <br><br>
+                <label for="pass">Password</label>
+                <input type="password" id = "pass" name = "password"/>
+                <br><br>
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id = "confirm" name = "confirmation">
+                <br><br>
+                <input type="submit" value = "Submit">
+                <br><br>
+            </div>           
+        </form>
+    
+{% endblock %}

@@ -1,0 +1,36 @@
+ {% extends 'adminApp/body.html' %}
+{% load static %}
+{% block body %}
+<br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 mx-auto" style="background-color:rgb(18, 18, 61)"> 
+                <div class="col-md-8 mx-auto my-4">              
+                    <h4 align="center" style="color: white;">Sub Topics</h4>
+                  </div>
+                <form action="{% url 'allsubTopic' data.id %}" method="post" role="post" class="" data-aos="fade-up">
+                    {% csrf_token %}
+                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        Sub <br>
+                        <select name="subtopics" id="" required>
+                            <option disabled selected>Select topics</option>
+                            {% for i in data %}
+                            <option value="">{{i.topic_name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                      <br><br>
+                      <div class="col-md-2 form-group mx-auto  ">
+                          <a class="" href=""><input type="submit" value="Add" 
+                            class=" btn btn-warning btn-outline-dark form-control">
+                          </a>
+                          <i class="bi bi-list mobile-nav-toggle"></i>
+                          <br><br>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+{% endblock %} >
