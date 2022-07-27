@@ -1,4 +1,4 @@
- {% extends 'adminApp/body.html' %}
+{% extends 'adminApp/body.html' %}
 {% load static %}
 {% block body %}
 <br><br>
@@ -6,22 +6,29 @@
         <div class="row">
             <div class="col-md-8 mx-auto" style="background-color:rgb(18, 18, 61)"> 
                 <div class="col-md-8 mx-auto my-4">              
-                    <h4 align="center" style="color: white;">Sub Topics</h4>
+                    <h4 align="center" style="color: white;">Edit Sub Topics</h4>
                   </div>
-                <form action="{% url 'allsubTopic' data.id %}" method="post" role="post" class="" data-aos="fade-up">
+                <form action="{% url 'addsubtopics' %}" method="post" role="post" class="" data-aos="fade-up">
                     {% csrf_token %}
                     <div class="col-lg-4 form-group mx-auto mt-5  text-white">
-                        Sub <br>
+                        Topics <br>
+                        <!-- {{data.topic_id}} -->
                         <select name="subtopics" id="" required>
                             <option disabled selected>Select topics</option>
-                            {% for i in data %}
-                            <option value="">{{i.topic_name}}</option>
+                            {% for i in topics %}
+                            <option value="{{i.id}}" {% if data.topic_id.id == i.id %} selected {% endif %}>{{i.topic_name}}</option>
                             {% endfor %}
                         </select>
                       </div>
-                      <br><br>
+                      <div class="col-md-8 form-group mx-auto mt-5 text-white">
+                        Sub Topics :<input type="text" value = "{{data.subtopic_name}}" name="subtopic_name" class="form-control" id="subtopic" placeholder="Enter sub-topic" value="" required >
+                        </div>
+                        <div class="col-md-8 form-group mx-auto mt-5 text-white ">
+                        Iframe:<input type="text" value = "{{data.iframe}}" name="iframe" class="form-control" id="iframe" placeholder="Enter code" value="" required >
+                        </div>
+                        <br><br>
                       <div class="col-md-2 form-group mx-auto  ">
-                          <a class="" href=""><input type="submit" value="Add" 
+                          <a class="" href=""><input type="submit" value="Edit" 
                             class=" btn btn-warning btn-outline-dark form-control">
                           </a>
                           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -33,4 +40,4 @@
     </div>
     <br><br>
 
-{% endblock %} >
+{% endblock %}

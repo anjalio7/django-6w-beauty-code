@@ -147,13 +147,14 @@ def all_subTopics(request): #view_subtopics
    
 def edit_subTopics (request , ids):
     subtopic = models.subtopics.objects.get(id=ids) #to fetch a paticular line
+    topicss = models.topics.objects.all()
     if request.method == 'POST' :
         subTopic = request.POST['subtopics']
         subtopic.subtopic_name = subTopic
         subtopic.save()
         return HttpResponseRedirect(reverse('subtopics'))
     else:
-        return render(request , 'adminApp/edit_subtopics.html' , {'data':subtopic})
+        return render(request , 'adminApp/edit_subtopics.html' , {'data':subtopic, 'topics': topicss})
 
 def delete_subTopic(request , ids):
     subtopic = models.subtopics.objects.get(id=ids)
@@ -161,5 +162,61 @@ def delete_subTopic(request , ids):
     return HttpResponseRedirect(reverse('subtopics'))
 
 # def log(request):
-#     return render(request , 'adminApp/prgm.html' )
+#     if request.method == "POST":
+#         # Attempt to sign user in
+#         username = request.POST["username"]
+#         password = request.POST["password"]
+#         user = authenticate(request, username=username,
+#         password=password)
+#         # Check if authentication successful
+#         if user is not None:
+#             if user.is_superuser :
+#                 login(request, user)
+#                 return HttpResponseRedirect(reverse("index") )
+#             else :
+#                 return render(request, "adminApp/prgm.html", {
+#                 "message": "Invalid username and/or password."
+#                 })
+#         else:
+#             return render(request, "adminApp/prgm.html", {
+#             "message": "Invalid username and/or password."
+#         })
+#     else:
+#         return render(request, "adminApp/prgm.html")
+# Start Content
 
+def add_content(request):
+    subtopic = models.subtopics.objects.all()
+    print(subtopic)
+    if request.method == 'POST' :
+        sub_Topic = request.POST['sub_Topics']
+        selsubTopic = models.subtopics.objects.get(id = sub_Topic)
+        content = request.POST['content']
+        print(selsubTopic,content)
+        a = models.content(subtopic_id = selsubTopic, data = content)
+        a.save()
+        return HttpResponseRedirect(reverse('viewContent'))
+    else:
+        return render(request , 'adminApp/add_content.html', {'content':subtopic })
+
+def view_content(request):
+    data = models.content.objects.all()
+    return render(request , 'adminApp/view_content.html', {'content': data})
+
+def edit_content(request , idss):
+    contents  =models.content.objects.get(id=idss)
+    subtopic=models.subtopics.objects.all()
+    if request.method == 'POST' :
+        content = request.POST['content']
+        content.data = content
+        content.save()
+        return HttpResponseRedirect(reverse('viewContent'))
+    else :
+        return render(request , 'adminApp/edit_content.html' , {'data':contents , 'sub' : subtopic})
+    
+def delete_content(request , idss):
+    contents = models.content.objects.get(id=idss)
+    contents.delete()
+    return HttpResponseRedirect(reverse('viewContent'))
+
+# End Content

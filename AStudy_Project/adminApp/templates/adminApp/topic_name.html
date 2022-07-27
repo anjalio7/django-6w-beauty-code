@@ -15,13 +15,18 @@
               Topic Name:<input type="text" name="topic_name" class="form-control" id="name" placeholder="Enter topic" value="{{data.topic_name}}" required >
             </div>
             <br><br>
-            <div class="col-md-2 form-group mx-auto ">
+            <center>
+            <div class="btn-group ">
                 <a class="" href=""><input type="submit" value="Add" 
                   class=" btn btn-warning btn-outline-dark form-control">
                 </a>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-                <br><br>
+                &nbsp; &nbsp; &nbsp;
+                <a class="" href="{% url 'allTopic' %}"><button type="button"
+                  class=" btn btn-lg-4 btn-warning btn-outline-success" >All topics</button></a>
+                  <i class="bi bi-list mobile-nav-toggle"></i>
             </div>
+          </center>
         </form>
       <br><br>
     </div>

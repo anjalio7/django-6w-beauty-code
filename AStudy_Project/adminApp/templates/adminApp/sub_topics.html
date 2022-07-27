@@ -7,7 +7,7 @@
             <div class="col-md-8 mx-auto" style="background-color:rgb(18, 18, 61)"> 
                 <div class="col-md-8 mx-auto my-4">              
                     <h4 align="center" style="color: white;">Sub Topics</h4>
-                  </div>
+                </div>
                 <form action="{% url 'addsubtopics' %}" method="post" role="post" class="" data-aos="fade-up">
                     {% csrf_token %}
                     <div class="col-lg-4 form-group mx-auto mt-5  text-white">
@@ -26,17 +26,23 @@
                         Iframe:<input type="text" name="iframe" class="form-control" id="iframe" placeholder="Enter code" value="" required >
                         </div>
                         <br><br>
-                      <div class="col-md-2 form-group mx-auto  ">
-                          <a class="" href=""><input type="submit" value="Add" 
+                        <center>
+                        <div class="btn-group btn-group-sm" >
+                            <a class="" href=""><input type="submit" value="Add" 
                             class=" btn btn-warning btn-outline-dark form-control">
-                          </a>
-                          <i class="bi bi-list mobile-nav-toggle"></i>
-                          <br><br>
-                      </div>
+                            </a> 
+                            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="" href="{% url 'allsubTopic' %}"><button type="button"
+                            class=" btn btn-lg-4 btn-warning btn-outline-success" >All subtopics</button></a>
+                            <i class="bi bi-list mobile-nav-toggle"></i>
+                            <br><br>             
+                        </center>
+                    </div>
+                    </div>    
                 </form>
             </div>
         </div>
     </div>
-    <br><br>
+<br><br>
 
 {% endblock %}
