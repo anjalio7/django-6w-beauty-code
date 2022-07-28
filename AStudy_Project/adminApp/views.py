@@ -149,10 +149,18 @@ def edit_subTopics (request , ids):
     subtopic = models.subtopics.objects.get(id=ids) #to fetch a paticular line
     topicss = models.topics.objects.all()
     if request.method == 'POST' :
-        subTopic = request.POST['subtopics']
-        subtopic.subtopic_name = subTopic
+        top = request.POST['subtopics']
+        selTop = models.topics.objects.get(id = top)
+        name = request.POST['subtopic_name']
+        iframes = request.POST['iframe']
+
+        subtopic.topic_id = selTop
+        subtopic.subtopic_name = name
+        subtopic.iframe = iframes
         subtopic.save()
-        return HttpResponseRedirect(reverse('subtopics'))
+        # subtopic.subtopic_name = subTopic
+        # subtopic.save()
+        return HttpResponseRedirect(reverse('allsubTopic'))
     else:
         return render(request , 'adminApp/edit_subtopics.html' , {'data':subtopic, 'topics': topicss})
 
@@ -161,28 +169,29 @@ def delete_subTopic(request , ids):
     subtopic.delete()
     return HttpResponseRedirect(reverse('subtopics'))
 
-# def log(request):
-#     if request.method == "POST":
-#         # Attempt to sign user in
-#         username = request.POST["username"]
-#         password = request.POST["password"]
-#         user = authenticate(request, username=username,
-#         password=password)
-#         # Check if authentication successful
-#         if user is not None:
-#             if user.is_superuser :
-#                 login(request, user)
-#                 return HttpResponseRedirect(reverse("index") )
-#             else :
-#                 return render(request, "adminApp/prgm.html", {
-#                 "message": "Invalid username and/or password."
-#                 })
-#         else:
-#             return render(request, "adminApp/prgm.html", {
-#             "message": "Invalid username and/or password."
-#         })
-#     else:
-#         return render(request, "adminApp/prgm.html")
+def log(request):
+    if request.method == "POST":
+        # Attempt to sign user in
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username,
+        password=password)
+        # Check if authentication successful
+        if user is not None:
+            if user.is_superuser :
+                login(request, user)
+                return HttpResponseRedirect(reverse("index") )
+            else :
+                return render(request, "adminApp/prgm.html", {
+                "message": "Invalid username and/or password."
+                })
+        else:
+            return render(request, "adminApp/prgm.html", {
+            "message": "Invalid username and/or password."
+        })
+    else:
+        return render(request, "adminApp/prgm.html")
+
 # Start Content
 
 def add_content(request):

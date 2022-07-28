@@ -8,7 +8,7 @@
                 <div class="col-md-8 mx-auto my-4">              
                     <h4 align="center" style="color: white;">Edit Sub Topics</h4>
                   </div>
-                <form action="{% url 'addsubtopics' %}" method="post" role="post" class="" data-aos="fade-up">
+                <form action="{% url 'edit-subtopic' data.id %}" method="post" role="post" class="" data-aos="fade-up">
                     {% csrf_token %}
                     <div class="col-lg-4 form-group mx-auto mt-5  text-white">
                         Topics <br>
