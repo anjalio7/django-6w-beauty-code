@@ -15,12 +15,12 @@
                 <select name="sub_Topics" id="" required>
                     <option disabled selected>Select subtopics</option>
                     {% for i in sub %}
-                    <option value="{{i.id}}"{% if data.subtopic_id.id == i.id %} selected {% endif %}>{{i.subtopic_name}}</option>
+                    <option value="{{i.id}}"{% if data.subtopic_id.id == i.id %} selected {% endif %}>{{i.topic_id.topic_name}} - {{i.subtopic_name}}</option>
                     {% endfor %}
                 </select>
               </div>
               <div class="col-md-8 form-group mx-auto mt-5 text-white">
-                Content :<input type="text" name="content" class="form-control" id="subtopic" placeholder="Enter content" value="{{data.data}}" required >
+                Content :<input type="text" name="contents" class="form-control" id="subtopic" placeholder="Enter content" value="{{data.data}}" required >
                 </div>
                 
                 <br><br>

@@ -13,7 +13,7 @@
                     <div class="col-lg-4 form-group mx-auto mt-5  text-white">
                         Topics <br>
                         <!-- {{data.topic_id}} -->
-                        <select name="subtopics" id="" required>
+                        <select class = 'form-select' name="subtopics" id="" required>
                             <option disabled selected>Select topics</option>
                             {% for i in topics %}
                             <option value="{{i.id}}" {% if data.topic_id.id == i.id %} selected {% endif %}>{{i.topic_name}}</option>

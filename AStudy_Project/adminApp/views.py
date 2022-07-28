@@ -216,9 +216,12 @@ def edit_content(request , idss):
     contents  =models.content.objects.get(id=idss)
     subtopic=models.subtopics.objects.all()
     if request.method == 'POST' :
-        content = request.POST['content']
-        content.data = content
-        content.save()
+        sub  = request.POST['sub_Topics']
+        selSub = models.subtopics.objects.get(id = sub)
+        data = request.POST['contents']
+        contents.data = data
+        contents.subtopic_id = selSub
+        contents.save()
         return HttpResponseRedirect(reverse('viewContent'))
     else :
         return render(request , 'adminApp/edit_content.html' , {'data':contents , 'sub' : subtopic})
