@@ -1,0 +1,48 @@
+{% extends 'userApp/body.html' %}
+{% load static %}
+{% block body %}
+
+    {% if message %}
+        <div class="alerts-success">
+            {{message}}
+        </div>
+    {% endif %}
+    
+    <h3 align="center">Register</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-white" style="background-color:#213b52">
+                <form action="{% url 'register1' %}" method = "post">
+                    {% csrf_token %}
+                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        <label for="user">Username :</label>
+                        <input type="text" class='form-control' id = "user" name = "username" required/>
+                    </div>
+                        <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        <label for="email">Email :</label>
+                        <input type="email" class='form-control' id = "email" name = "email" required/>
+                    </div>
+                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        <label for="pass">Password:</label>
+                        <input type="password" class='form-control' id = "pass" name = "password" required/>
+                    </div>
+                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        <label for="confirm">Confirm Password :</label>
+                        <input type="password"  class='form-control' id = "confirm" name = "confirmation">
+                    </div>
+                    <center>
+                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+                        <input type="submit" value = "Submit">
+                    </div>
+                    </center>
+                    <br>
+                    <div class="text-center text-white">
+                        If you have already an account then
+                        <a href="{% url 'login' %}">Login</a> here .</div>
+                    <br><br>           
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+{% endblock %}

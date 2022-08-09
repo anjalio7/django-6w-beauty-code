@@ -12,7 +12,7 @@
             {% csrf_token %}
             <div class="col-lg-4 form-group mx-auto mt-5  text-white">
                 Sub Topics <br>
-                <select name="sub_Topics" id="" required>
+                <select class = "form-control"  name="sub_Topics" id="" required>
                     <option disabled selected>Select subtopics</option>
                     {% for i in content %}
                     <option value="{{i.id}}">{{i.topic_id.topic_name}} - {{i.subtopic_name}}</option>

@@ -1,0 +1,88 @@
+{% extends 'userApp/body.html' %}
+{% load static %}
+
+{% block body %}
+   <!-- ======= Features Section ======= -->
+   <section id="features" class="features section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2 data-aos="fade-in">Welcome to A+Study</h2>
+        <p data-aos="fade-in">Here you can learn about the diiferent techologies in easy and interactive way .</p>
+      </div>
+
+      <div class="row content">
+        <div class="col-md-5" data-aos="fade-right">
+          <img src={% static "assets/img/HTML11.jpg" %} class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-4" data-aos="fade-left">
+          <h3>Hypertext Markup Language</h3>
+          <p class="fst-italic">
+            HTML stands for Hypertextmarkup language . It is non-case sensitive language .It describes the structure of web page .There are many tags/elements are used to define the content of the web pages.
+          </p>
+          <ul>
+            <li><i class="bi bi-check"></i>eg : &lt;h1&gt;Hello world!!&lt;/h1&gt;</li>
+            <li><i class="bi bi-check"></i>We can use some special symbols also :<br>
+            <li><h3> &copy; &reg; &trade;</h3></li></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row content">
+        <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+          <img src={% static "assets/img/CSS1.jpg" %}  class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+          <h3>Cascading style sheet</h3>
+          <p class="fst-italic">
+            CSS stands for Cascading style sheet . It is used to give the style to the web pages.It is case sensitive.
+            CSS are of the three types :
+            <ul>
+                <li><i class="bi bi-check"></i>Inline CSS</li>
+                <li><i class="bi bi-check"></i>Internal CSS</li>
+                <li><i class="bi bi-check"></i>External CSS</li>
+            </ul>
+          </p>
+          <!-- <p></p> -->
+        </div>
+      </div>
+
+      <div class="row content">
+        <div class="col-md-5" data-aos="fade-right">
+          <img src={% static "assets/img/js1.png" %}  class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5" data-aos="fade-left">
+          <h3>JavaScript</h3>
+          <p>JavaScript abbreviated as JS.JavaScript is used to make the web page more interactive . We use JavaScript to apply the functions on the particular content. It define the website behaviour. It is written in the body section.It is also case sensitive. </p>
+          <ul>
+            <li><i class="bi bi-check"></i> It helps you to developing geat fornt-end as well as back-end.</li>
+            <li><i class="bi bi-check"></i>Raise dynamic pop-ups on the webpages to give different types of notifications.</li>
+            <li><i class="bi bi-check"></i>You can add and modify your HTML to change its look .</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row content">
+        <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+          <img src={% static "assets/img/BOOTS.png" %}  class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+          <h3>Booststrap</h3>
+          <p class="fst-italic">
+            Bootstrap is use to make webages more responsive. It contains HTML , CSS and JS for developing resposive web pages and mobile apps.
+          </p>
+          <p>
+            <ul>
+                <li><i class="bi bi-check"></i>It crates platform idependent webpages.</li>
+                <li><i class="bi bi-check"></i>It creates responsive web-pages</li>
+                <li><i class="bi bi-check"></i>It is faster and easier way for web-development.</li>
+              </ul>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Features Section -->
+       
+
+{% endblock %}
