@@ -10,15 +10,18 @@ class user(AbstractUser):
     #password = models.CharField(max_length=100)
 
 class topics (models.Model):
-    topic_name = models.CharField(max_length=50)
+    topic_name = models.CharField(max_length=50,unique=True)
+
 
 class subtopics (models.Model):
     topic_id = models.ForeignKey(topics , max_length=50  , on_delete=models.CASCADE , related_name='topic_id')
     subtopic_name = models.CharField(max_length=50)
     iframe = models.CharField(max_length=1000)
-
+    class Meta:
+        unique_together = ('topic_id','subtopic_name')
 
 class content (models.Model):
     subtopic_id = models.ForeignKey(subtopics , max_length=50  , on_delete=models.CASCADE , related_name='subtopic_id')
+    title = models.CharField(max_length=30,default=None)
     data = models.CharField(max_length = 1000)
 

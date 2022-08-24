@@ -373,7 +373,7 @@ section {
 }
 
 .section-bg {
-  background: linear-gradient(180deg, #f2f6fa 0%, #fff 100%);
+  background: linear-gradient(180deg, #f2f6fa 0%, #fff 100%)!important;
 }
 
 .section-title {

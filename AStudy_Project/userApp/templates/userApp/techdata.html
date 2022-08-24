@@ -1,0 +1,30 @@
+{% extends 'userApp/home.html' %}
+
+<!-- content -->
+{% block main %}
+    {% if val %}
+        {% for i in val %}
+        <!-- {{i.subTopic_Name_id}} -->
+            <!-- {% for j in value %}
+                {{j.topic_id}}
+            {% endfor %} -->
+        <div class="container-fluid text-dark m-0 p-4">
+            <div class="row">
+                <h3 class="text-center my-2">{{i.subtopic_id.subtopic_name|title}}</h3>
+                <hr>
+            </div>
+            <div class="row">
+                <h4 class="mt-3 px-5">{{i.title|title}}</h4>
+                <p class="px-5 my-4">{{i.data}}</p>
+
+                {% if user.is_authenticated %}
+                    {{i.subtopic_id.iframe|safe}}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <span class="fs-1 mx-5 my-5 fw-bold">404 NOT FOUND</span>
+    {% endif %}
+{% endblock %}
+<!-- end content -->

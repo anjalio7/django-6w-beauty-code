@@ -4,37 +4,37 @@
 <br><br>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 mx-auto" style="background-color:#213b52"> 
+            <div class="col-md-8 bg-light shadow mx-auto"> 
                 <div class="col-md-8 mx-auto my-4">              
-                    <h4 align="center" style="color: white;">Edit Sub Topics</h4>
+                    <h4 align="center" >Edit Subtopic</h4>
                   </div>
-                <form action="{% url 'edit-subtopic' data.id %}" method="post" role="post" class="" data-aos="fade-up">
-                    {% csrf_token %}
-                    <div class="col-lg-4 form-group mx-auto mt-5  text-white">
-                        Topics <br>
-                        <!-- {{data.topic_id}} -->
-                        <select class = 'form-select' name="subtopics" id="" required>
-                            <option disabled selected>Select topics</option>
-                            {% for i in topics %}
-                            <option value="{{i.id}}" {% if data.topic_id.id == i.id %} selected {% endif %}>{{i.topic_name}}</option>
-                            {% endfor %}
-                        </select>
-                      </div>
-                      <div class="col-md-8 form-group mx-auto mt-5 text-white">
-                        Sub Topics :<input type="text" value = "{{data.subtopic_name}}" name="subtopic_name" class="form-control" id="subtopic" placeholder="Enter sub-topic" value="" required >
-                        </div>
-                        <div class="col-md-8 form-group mx-auto mt-5 text-white ">
-                        Iframe:<input type="text" value = "{{data.iframe}}" name="iframe" class="form-control" id="iframe" placeholder="Enter code" value="" required >
-                        </div>
-                        <br><br>
-                      <div class="col-md-2 form-group mx-auto  ">
-                          <a class="" href=""><input type="submit" value="Edit" 
-                            class=" btn btn-warning btn-outline-dark form-control">
-                          </a>
-                          <i class="bi bi-list mobile-nav-toggle"></i>
-                          <br><br>
-                      </div>
-                </form>
+                  <div class="container">
+                    <form action="{% url 'edit-subtopic' data.id %}" method="post" role="post" class="" data-aos="fade-up">
+                        {% csrf_token %}
+                        <div class="col-lg-12 form-group mx-auto mt-5  text-white">
+                            
+                            <select class = 'form-select mb-3' name="subtopics" id="" required>
+                                <option disabled selected>Select topics</option>
+                                {% for i in topics %}
+                                <option value="{{i.id}}" {% if data.topic_id.id == i.id %} selected {% endif %}>{{i.topic_name}}</option>
+                                {% endfor %}
+                            </select>
+                          </div>
+                            
+                            <label for="" class="text-dark mb-3">Sub Topics :</label>
+                            <input type="text" value = "{{data.subtopic_name}}" name="subtopic_name" class="form-control mb-3" id="subtopic" placeholder="Enter sub-topic" value="" required >
+
+                            <label for="" class="text-dark mb-3">Iframe:</label>
+                            <textarea type="text" name="iframe" rows="15" class="form-control mb-3" id="iframe" placeholder="Enter code" value="" required >{{data.iframe}}</textarea>
+
+                          <div class="col-md-2 form-group mx-auto  ">
+                              <a class="" href=""><input type="submit" value="Edit" 
+                                class=" btn btn-warning btn-outline-dark mb-4 form-control">
+                              </a>
+                              <i class="bi bi-list mobile-nav-toggle"></i>
+                          </div>
+                    </form>
+                
             </div>
         </div>
     </div>

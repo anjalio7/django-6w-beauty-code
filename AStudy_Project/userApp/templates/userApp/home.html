@@ -1,0 +1,52 @@
+{% extends 'userApp/base.html' %}
+
+{% block sidebar %}
+    <!-- sidebar -->
+        <div class="d-flex flex-column bg-dark text-white" style="width: 100%; height: 800px;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4"></span>
+          </a>
+          <hr>
+          <ul class="nav flex-column">
+            {% for data in value %}
+              <li class="nav-item">
+                <a href="{% url 'techdata' data.id %}" class="nav-link text-white" value={{data.id}}>
+                  {{data.topic_id.topic_name}} {{data.subtopic_name}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul> 
+          <hr>
+        </div>
+      <!-- end sidebar -->
+{% endblock %}
+
+{% block main %}
+  {% if val %}
+    {% for i in val %}
+    <!-- {{i.subTopic_Name_id}} -->
+        <!-- {% for j in value %}
+            {{j.topic_id}}
+        {% endfor %} -->
+    <div class="container-fluid text-dark m-0 p-4">
+        <div class="row">
+            <h3 class="text-center my-2">{{i.subtopic_id.subtopic_name|title}}</h3>
+            <hr>
+        </div>
+        <div class="row">
+            <h4 class="mt-3 px-5">{{i.title|title}}</h4>
+            <p class="px-5 my-4">{{i.data}}</p>
+
+            {% if user.is_authenticated %}
+                {{i.subtopic_id.iframe|safe}}
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <span class="fs-1 mx-5 my-5 fw-bold">404 NOT FOUND</span>
+  {% endif %}
+{% endblock %}
+
+

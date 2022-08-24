@@ -2,23 +2,22 @@
 
 {% block body %}
 <br>
-<h1 align="center" style="color:white ;">All Sub Topics</h1>
-<div class="container-fluid"></div>
+<h1 align="center" >Sub Topics</h1>
+<div class="container-fluid section-bg"></div>
     <div class="row">
-        <div class="col-md-2 mx-2 text-white">
+        <div class="col-md-12 mx-2 text-white">
             <a class="" href="{% url 'subtopics' %}"><button type="button"
-            class=" btn btn-lg-4 btn-warning btn-outline-success" >Add</button>
+            class=" btn btn-warning d-block m-auto mb-4" >Add Sub Topic</button>
             </a>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-            <br><br>
+            
         </div>   
     </div>
 </div>
     <div class="container-fluid"></div>
            <div class="row " >
-            <div class="col col-md-8 mx-auto p-10px bg-dark text-center">
+            <div class="col col-md-8 mx-auto p-10px text-center">
                 
-                <table class="table table-dark table-bordered table-hover table-striped">
+                <table class="table  table-bordered table-striped">
                     <tr>
                         <th>ID</th>
                         <th>Topic</th>
@@ -29,17 +28,19 @@
 
                     </tr>
                         {% for i in subtopic %}
-                        <tr>
+                    <tr>
                         <td>{{i.id}}</td>
                         <td>{{i.topic_id.topic_name}}</td>
                         <td>{{i.subtopic_name}}</td>
-                        <td class='iframe' style="overflow:hidden !important;">{{i.iframe}}</td>
+                        <td >
+                            <div style="max-height: 70px; overflow-y: scroll; ">{{i.iframe}}</div>
+                        </td>
                         <td>
-                            <a href="{% url 'edit-subtopic' i.id %}"><button style="background-color:rgb(170, 230, 195)">Edit
+                            <a href="{% url 'edit-subtopic' i.id %}"><button class="btn btn-dark">Edit
                             </button></a>
                         </td>
                         <td>
-                            <a href="{% url 'delete-subtopic' i.id %}"><button style="background-color:rgb(170, 230, 195)">Delete
+                            <a href="{% url 'delete-subtopic' i.id %}"><button class="btn btn-dark">Delete
                             </button></a>
                         </td>
                     </tr>

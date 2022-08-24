@@ -2,23 +2,23 @@
 
 {% block body %}
 <br>
-<h1 align="center" style="color:white ;">All Topics</h1>
-<div class="container-fluid"></div>
-    <div class="row">
-        <div class="col-md-2 mx-2 text-white">
-            <a class="" href="{% url 'addtopics' %}"><button type="button"
-            class=" btn btn-lg-4 btn-warning btn-outline-success" >Add topics</button></a>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-            <br><br>
+<h1 align="center" > Topics</h1>
+<div class=" container-fluid section-bg"></div>
+    <div class="row align-items-center">
+        <div class="col-md-12 mx-2 text-white pricing">
+            <a class="" href="{% url 'addtopics' %}" >
+                <button class="btn btn-warning d-block m-auto mb-4">
+                    Add topics
+                </button> </a>
         </div>   
     </div>
 </div>
 
     <div class="container-fluid"></div>
         <div class="row " >
-            <div class="col col-md-8 mx-auto p-10px bg-dark text-center">
+            <div class="col col-md-8 mx-auto p-10px text-center">
 
-                <table class="table table-dark table-bordered table-hover table-striped">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>ID</th>
                         <th>Topic Names</th>
@@ -33,11 +33,11 @@
                         <td>{{i.topic_name}}</td>
                         <td>
                             <a href="{% url 'edit-topic' i.id %}">
-                                <button style="background-color:rgb(170, 230, 195)">Edit
+                                <button class="btn btn-dark">Edit
                             </button></a>
                         </td>
                         <td>
-                            <a href="{% url 'delete-topic' i.id %}"><button style="background-color:rgb(170, 230, 195)">Delete
+                            <a href="{% url 'delete-topic' i.id %}"><button class="btn btn-dark">Delete
                             </button></a>
                         </td>
                     </tr>

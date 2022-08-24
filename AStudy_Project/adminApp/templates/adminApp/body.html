@@ -4,12 +4,6 @@
 <html lang="en">
 
 <head>
-  <!-- <style>
-    .iframe
-    {
-      overflow: hidden;
-    }
-  </style> -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -42,11 +36,14 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+
+
 </head>
 
 
 
-<body style="background-color: rgba(47, 109, 114, 0.507);">
+<body>
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -63,7 +60,7 @@
           <li><a class="nav-link scrollto active" href="{% url 'body' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'allTopic' %}">Topics</a></li>
           <li><a class="nav-link scrollto" href="{% url 'allsubTopic' %}">Subtopics</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'add-content' %}">Contents</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'viewContent' %}">Contents</a></li>
           <!--li><a class="nav-link scrollto" href="#team">Portfolio</a></li-->
           <!--li class="dropdown"><a href="#"><span>Courses</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -92,7 +89,10 @@
             </ul>
         </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li-->
+            {% if user.is_authenticated %}
           <li><a class="getstarted scrollto" href="{% url 'logout' %}">Logout</a></li>
+
+            {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!--navbar -->
@@ -100,10 +100,12 @@
     </div>
   </header><!-- End Header -->
 
+<div class="section-bg pt-4">
+  {% block body %}
+  
+  {% endblock %}
+</div>
 
- {% block body %}
-
- {% endblock %}
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

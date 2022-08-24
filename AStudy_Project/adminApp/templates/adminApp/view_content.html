@@ -1,27 +1,26 @@
 {% extends 'adminApp/body.html' %}
 
 {% block body %}
-<br>
-<h1 align="center" style="color:white ;">All Content</h1>
-<div class="container-fluid">
+
+<div class="container-fluid p-4">
+    <h1 align="center" class=""> Content</h1>
     <div class="row">
-        <div class="col-md-2 mx-2 text-white">
+        <div class="col-md-12 mx-2 text-white">
             <a class="" href="{% url 'add-content' %}"><button type="button"
-            class=" btn btn-lg-4 btn-warning btn-outline-success" >Add content</button>
+            class=" btn btn-warning d-block m-auto mb-4" >Add content</button>
             </a>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-            <br><br>
         </div>   
     </div>
 </div>
     <div class="container-fluid"></div>
            <div class="row " >
-            <div class="col col-md-8 mx-auto p-10px bg-dark text-center">
+            <div class="col col-md-8 mx-auto text-center">
                 
-                <table class="table table-dark table-bordered table-hover table-striped">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>ID</th>
                         <th>Subtopics</th>
+                        <th>Title</th>
                         <th>Content</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -30,15 +29,16 @@
                         {% for i in content %}
                         <tr>
                         <td>{{i.id}}</td>
+                        <td>{{i.title}}</td>
                         <td>{{i.subtopic_id.subtopic_name}}</td>
                         <td>{{i.data}}</td>
                     
                         <td>
-                            <a href="{% url 'editContent' i.id %}"><button style="background-color:rgb(170, 230, 195)">Edit
+                            <a href="{% url 'editContent' i.id %}"><button class="btn btn-dark">Edit
                             </button></a>
                         </td>
                         <td>
-                            <a href="{% url 'deleteContent' i.id %}"><button style="background-color:rgb(170, 230, 195)">Delete
+                            <a href="{% url 'deleteContent' i.id %}"><button class="btn btn-dark">Delete
                             </button></a>
                         </td>
                     </tr>

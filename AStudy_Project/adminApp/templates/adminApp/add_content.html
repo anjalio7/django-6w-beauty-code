@@ -4,23 +4,28 @@
 <br><br>
 <div class="container-fluid">
   <div class="row">
-      <div class="col-md-8 mx-auto" style="background-color:rgb(18, 18, 61)">
+      <div class="col-md-8 bg-light shadow mx-auto">
         <div class="col-md-8 mx-auto my-4">
-          <h4 align="center" style="color: white;">Add Content</h4>
+          <h4 align="center" style="color: Black;">Add Content</h4>
         </div>
         <form action="{% url 'add-content' %}" method="post" role="post" class="" data-aos="fade-up">
             {% csrf_token %}
-            <div class="col-lg-4 form-group mx-auto mt-5  text-white">
+            <div class="col-lg-10 form-group mx-auto mt-5  text-white">
                 Sub Topics <br>
-                <select class = "form-control"  name="sub_Topics" id="" required>
+                <select class="form-select mt-3" name="sub_Topics" id="" required>
                     <option disabled selected>Select subtopics</option>
                     {% for i in content %}
                     <option value="{{i.id}}">{{i.topic_id.topic_name}} - {{i.subtopic_name}}</option>
                     {% endfor %}
                 </select>
               </div>
-              <div class="col-md-8 form-group mx-auto mt-5 text-white">
-                Content :<input type="text" name="content" class="form-control" id="subtopic" placeholder="Enter content" value="" required >
+              <div class="col-md-10 form-group mx-auto mt-5 text-white">
+                
+                <label for="" class="text-dark">Title :</label>
+                <input type="text" name="title" class="form-control my-3" placeholder="Enter Title" >
+                <label for="" class="text-dark">Content :</label>
+                
+                <textarea type="text" name="content" class="form-control mt-3" id="subtopic" placeholder="Enter content" rows="15" value="" required ></textarea>
                 </div>
                 
                 <br><br>
@@ -31,7 +36,7 @@
                     </a> 
                     &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="" href="{% url 'viewContent'%}"><button type="button"
-                    class=" btn btn-lg-4 btn-warning btn-outline-success" >All Content</button></a>
+                    class=" btn btn-lg-4 btn-warning" >All Content</button></a>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                   </div> 
                 </center>
