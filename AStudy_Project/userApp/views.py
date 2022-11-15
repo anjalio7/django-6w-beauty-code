@@ -48,7 +48,8 @@ def logout_user(request):
 
 def register1(request):
     if request.method == "POST":
-        username = request.POST["username"]
+       
+        username = request.POST["username"] 
         email = request.POST["email"]
 
         # Ensure password matches confirmation
@@ -90,9 +91,13 @@ def htmltags(request):
 
 
 def viewSubTopics(request, id):
-    selTopic = topics.objects.get(id = id)
-    data = subtopics.objects.filter(topic_id = selTopic)
-    return render(request, 'userApp/htmltags.html', {'data': data})
+    if data.key<0 :
+        datas = topics.objects.all()
+        selTopic = topics.objects.get(id = id)
+        data = subtopics.objects.filter(topic_id = selTopic)
+        return render(request, 'userApp/htmltags.html', {'data': data, 'obj':datas})
+    else:
+        return render(request, "userApp/htmltags.html" , {"message": ' Something went wrong.'})
 
 def viewContent(request , ids):
     selCon = subtopics.objects.get(id=ids)

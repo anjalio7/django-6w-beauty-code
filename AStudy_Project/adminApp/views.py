@@ -24,6 +24,13 @@ def index(request):
 
 # Start login
 def login_view(request):
+    #IP address
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+    else:
+            ip = request.META.get('REMOTE_ADDR')
+    print("IP is ",ip)
     if request.method == "POST":
         # Attempt to sign user in
         username = request.POST["username"]
@@ -170,6 +177,7 @@ def delete_subTopic(request , ids):
     return HttpResponseRedirect(reverse('subtopics'))
 
 def log(request):
+    
     if request.method == "POST":
         # Attempt to sign user in
         username = request.POST["username"]

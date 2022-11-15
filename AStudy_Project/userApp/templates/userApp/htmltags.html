@@ -1,7 +1,9 @@
 {% extends 'userApp/body.html' %}
 {% load static %}
 {% block body %}
-
+    {% if message %}
+        {{message}}
+    {% endif %}
     
     <h3 align="center" style="color: Black;"></h3>
     <center>
